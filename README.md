@@ -1,1 +1,1 @@
-aos
+aos-client
