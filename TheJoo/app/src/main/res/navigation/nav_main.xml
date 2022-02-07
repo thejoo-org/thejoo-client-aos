@@ -7,5 +7,14 @@
     <fragment
         android:id="@+id/selectFragment"
         android:name="com.manjee.thejoo.ui.SelectFragment"
-        android:label="SelectFragment" />
+        android:label="SelectFragment">
+        <action
+            android:id="@+id/action_selectFragment_to_userFragment"
+            app:destination="@+id/userFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.manjee.thejoo.ui.UserFragment"
+        android:label="UserFragment" />
 </navigation>
