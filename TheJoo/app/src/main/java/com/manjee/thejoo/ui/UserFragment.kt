@@ -23,6 +23,8 @@ class UserFragment : Fragment(){
         return FragmentUserBinding.inflate(inflater, container, false).run {
             lifecycleOwner = this@UserFragment
 
+            observedVm()
+
             root
         }
     }
@@ -30,6 +32,15 @@ class UserFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getUserToken()
+//        viewModel.getUserToken()
+        viewModel.createUserQrCode("my name is unman")
+    }
+
+    private fun FragmentUserBinding.observedVm() {
+        with(viewModel) {
+            createUerQrLiveData.observe(viewLifecycleOwner) {
+                ivQrCode.setImageBitmap(it)
+            }
+        }
     }
 }
