@@ -1,5 +1,5 @@
 package com.manjee.thejoo.data.model
 
-data class ResponseCreateUserToken(
+data class ResponseCreateAuthToken(
     val token: String = ""
 )

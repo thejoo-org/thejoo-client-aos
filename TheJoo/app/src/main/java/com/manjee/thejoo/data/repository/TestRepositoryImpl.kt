@@ -2,7 +2,7 @@ package com.manjee.thejoo.data.repository
 
 import android.util.Log
 import com.manjee.thejoo.api.TestApi
-import com.manjee.thejoo.data.model.ResponseCreateUserToken
+import com.manjee.thejoo.data.model.ResponseCreateAuthToken
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,15 +12,15 @@ class TestRepositoryImpl @Inject constructor(
     private val testApi: TestApi
 ) : TestRepository {
 
-    override suspend fun createUserToken(
+    override suspend fun createAuthToken(
         userId: Int,
         success: (String) -> Unit,
         fail: (Throwable) -> Unit
     ) {
-        testApi.createUserToken(userId).enqueue(object : Callback<ResponseCreateUserToken> {
+        testApi.createAuthToken(userId).enqueue(object : Callback<ResponseCreateAuthToken> {
             override fun onResponse(
-                call: Call<ResponseCreateUserToken>,
-                response: Response<ResponseCreateUserToken>
+                call: Call<ResponseCreateAuthToken>,
+                response: Response<ResponseCreateAuthToken>
             ) {
                 if (response.code() in 200..399) {
                     success(response.body()!!.token)
@@ -29,7 +29,7 @@ class TestRepositoryImpl @Inject constructor(
                 }
             }
 
-            override fun onFailure(call: Call<ResponseCreateUserToken>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseCreateAuthToken>, t: Throwable) {
                 fail(t)
             }
         })

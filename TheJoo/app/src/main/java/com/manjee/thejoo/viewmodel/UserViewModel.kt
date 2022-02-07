@@ -25,7 +25,7 @@ class UserViewModel @Inject constructor(
 
     fun getUserToken() {
         viewModelScope.launch(Dispatchers.IO) {
-            testRepository.createUserToken(0,
+            testRepository.createAuthToken(0,
                 success = {
                     Log.d(TAG, "success createUerToken $it")
                 },
