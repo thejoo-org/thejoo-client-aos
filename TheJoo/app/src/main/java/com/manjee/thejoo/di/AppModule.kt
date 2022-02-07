@@ -2,7 +2,10 @@ package com.manjee.thejoo.di
 
 import android.content.Context
 import com.manjee.thejoo.TheJooPreference
+import com.manjee.thejoo.api.MeApi
 import com.manjee.thejoo.api.TestApi
+import com.manjee.thejoo.data.repository.MeRepository
+import com.manjee.thejoo.data.repository.MeRepositoryImpl
 import com.manjee.thejoo.data.repository.TestRepository
 import com.manjee.thejoo.data.repository.TestRepositoryImpl
 import com.manjee.thejoo.util.UrlProvider
@@ -76,5 +79,16 @@ class AppModule {
     @Provides
     fun providerTestRepository(testApi: TestApi): TestRepository {
         return TestRepositoryImpl(testApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMeApiService(retrofit: Retrofit): MeApi =
+        retrofit.create(MeApi::class.java)
+
+    @Singleton
+    @Provides
+    fun providerMeRepository(meApi: MeApi): MeRepository {
+        return MeRepositoryImpl(meApi)
     }
 }
