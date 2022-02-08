@@ -22,6 +22,7 @@ class UserFragment : Fragment(){
     ): View {
         return FragmentUserBinding.inflate(inflater, container, false).run {
             lifecycleOwner = this@UserFragment
+            vm = viewModel
 
             observedVm()
 
