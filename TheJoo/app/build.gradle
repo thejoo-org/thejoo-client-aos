@@ -72,6 +72,9 @@ dependencies {
     // qr
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
 
+    // decode jwt
+    implementation 'com.auth0.android:jwtdecode:2.0.1'
+
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.0-alpha01"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.0-alpha01"
