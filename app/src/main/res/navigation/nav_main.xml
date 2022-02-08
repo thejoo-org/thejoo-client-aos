@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/selectFragment">
+
+    <fragment
+        android:id="@+id/selectFragment"
+        android:name="com.manjee.thejoo.ui.SelectFragment"
+        android:label="SelectFragment">
+        <action
+            android:id="@+id/action_selectFragment_to_userFragment"
+            app:destination="@+id/userFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.manjee.thejoo.ui.UserFragment"
+        android:label="UserFragment" />
+</navigation>

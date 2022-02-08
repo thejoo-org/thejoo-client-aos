@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TheJoo</string>
+    <string name="string_user_test">유저 테스트</string>
+    <string name="string_ceo_test">업주 테스트</string>
+</resources>
