@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import com.manjee.thejoo.TheJooPreference
+import com.manjee.thejoo.data.repository.MeRepository
 import com.manjee.thejoo.data.repository.TestRepository
 import com.manjee.thejoo.util.SingleLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +19,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserViewModel @Inject constructor(
-    private val testRepository: TestRepository
+    private val testRepository: TestRepository,
+    private val meRepository: MeRepository,
+    private val theJooPreference: TheJooPreference
 ) : ViewModel() {
 
     private val _createUerQrLiveData = SingleLiveData<Bitmap>()
@@ -25,9 +29,11 @@ class UserViewModel @Inject constructor(
 
     fun getUserToken() {
         viewModelScope.launch(Dispatchers.IO) {
-            testRepository.createAuthToken(0,
+            testRepository.createAuthToken(3,
                 success = {
                     Log.d(TAG, "success createUerToken $it")
+                    theJooPreference.setUserToken(it)
+                    getUserQrToken()
                 },
                 fail = {
                     Log.e(TAG, "fail createUserToken $it")
@@ -35,7 +41,19 @@ class UserViewModel @Inject constructor(
         }
     }
 
-    fun createUserQrCode(qrData: String) {
+    private fun getUserQrToken() {
+        viewModelScope.launch(Dispatchers.IO) {
+            meRepository.getUserToken(success = {
+                Log.d(TAG, "success getUerQrToken $it")
+                createUserQrCode(it)
+            },
+                fail = {
+                    Log.e(TAG, "fail getUerQrToken $it")
+                })
+        }
+    }
+
+    private fun createUserQrCode(qrData: String) {
         try {
             val barcodeEncoder = BarcodeEncoder()
             val bitmap = barcodeEncoder.encodeBitmap(qrData, BarcodeFormat.QR_CODE, 400, 400)

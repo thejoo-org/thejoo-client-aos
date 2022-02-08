@@ -32,8 +32,7 @@ class UserFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        viewModel.getUserToken()
-        viewModel.createUserQrCode("my name is unman")
+        viewModel.getUserToken()
     }
 
     private fun FragmentUserBinding.observedVm() {
