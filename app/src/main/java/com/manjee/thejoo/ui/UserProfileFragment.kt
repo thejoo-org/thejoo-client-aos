@@ -26,11 +26,18 @@ class UserProfileFragment : Fragment() {
     ): View {
         return FragmentUserProfileBinding.inflate(inflater, container, false).run {
             lifecycleOwner = this@UserProfileFragment
+            vm = viewModel
 
             initView()
 
             root
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getUserProfile()
     }
 
     private fun FragmentUserProfileBinding.initView() {

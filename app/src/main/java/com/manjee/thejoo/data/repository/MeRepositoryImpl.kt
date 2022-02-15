@@ -3,6 +3,7 @@ package com.manjee.thejoo.data.repository
 import android.util.Log
 import com.manjee.thejoo.api.MeApi
 import com.manjee.thejoo.data.model.ResponseGetUserToken
+import com.manjee.thejoo.data.model.UserProfile
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +27,22 @@ class MeRepositoryImpl @Inject constructor(
             }
 
             override fun onFailure(call: Call<ResponseGetUserToken>, t: Throwable) {
+                fail(t)
+            }
+        })
+    }
+
+    override suspend fun getUserProfile(success: (UserProfile) -> Unit, fail: (Throwable) -> Unit) {
+        meApi.getUserProfile().enqueue(object : Callback<UserProfile> {
+            override fun onResponse(call: Call<UserProfile>, response: Response<UserProfile>) {
+                if (response.code() in 200..399) {
+                    success(response.body()!!)
+                } else {
+                    Log.e(TAG, "fail getUserProfile $response")
+                }
+            }
+
+            override fun onFailure(call: Call<UserProfile>, t: Throwable) {
                 fail(t)
             }
         })
