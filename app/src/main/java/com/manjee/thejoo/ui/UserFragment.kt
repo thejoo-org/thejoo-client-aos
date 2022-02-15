@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
+import com.manjee.thejoo.R
 import com.manjee.thejoo.databinding.FragmentUserBinding
 import com.manjee.thejoo.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserFragment : Fragment(){
+class UserFragment : Fragment() {
 
     private val viewModel by viewModels<UserViewModel>()
 
@@ -40,6 +42,11 @@ class UserFragment : Fragment(){
         with(viewModel) {
             createUerQrLiveData.observe(viewLifecycleOwner) {
                 ivQrCode.setImageBitmap(it)
+            }
+
+            navigate.observe(viewLifecycleOwner) {
+                requireView().findNavController()
+                    .navigate(R.id.action_userFragment_to_userProfileFragment)
             }
         }
     }

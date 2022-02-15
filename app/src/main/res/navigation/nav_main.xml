@@ -16,5 +16,14 @@
     <fragment
         android:id="@+id/userFragment"
         android:name="com.manjee.thejoo.ui.UserFragment"
-        android:label="UserFragment" />
+        android:label="UserFragment">
+        <action
+            android:id="@+id/action_userFragment_to_userProfileFragment"
+            app:destination="@+id/userProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.manjee.thejoo.ui.UserProfileFragment"
+        android:label="UserProfileFragment" />
 </navigation>
