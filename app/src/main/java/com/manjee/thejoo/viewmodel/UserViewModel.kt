@@ -31,6 +31,8 @@ class UserViewModel @Inject constructor(
     val createUerQrLiveData: LiveData<Bitmap> get() = _createUerQrLiveData
     private val _remainQrTime = SingleLiveData<Long>()
     val remainQrTime: LiveData<Long> get() = _remainQrTime
+    private val _navigate = SingleLiveData<Int>()
+    val navigate: LiveData<Int> get() = _navigate
 
     // 유저 인증 토큰 생성
     fun getUserToken() {
@@ -91,6 +93,10 @@ class UserViewModel @Inject constructor(
                 getUserQrToken()
             }
         }
+    }
+
+    fun navigate(id: Int) {
+        _navigate.postValue(id)
     }
 
     companion object {

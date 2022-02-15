@@ -33,5 +33,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_qrCode"
             tools:text="남은 시간 30초" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_navigateMyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="@{() -> vm.navigate(btnNavigateMyProfile.getId())}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_timer" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
