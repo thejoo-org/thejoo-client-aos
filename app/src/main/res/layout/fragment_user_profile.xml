@@ -20,41 +20,38 @@
         <ImageView
             android:id="@+id/iv_bigBackground"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/teal_200"
+            android:layout_height="200dp"
+            android:background="@color/light_blue"
             tools:ignore="ContentDescription" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_profile"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@color/purple_200"
+            android:src="@drawable/iu_profile"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_bold"
             android:text="@{vm.userProfileLiveData.name}"
+            android:textColor="@color/white"
             android:textSize="16sp"
             tools:layout_editor_absoluteX="101dp"
             tools:layout_editor_absoluteY="10dp"
             tools:text="유저 이름" />
 
         <TextView
-            android:id="@+id/tv_membershipCnt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="해당 필드 내용 아직 확정X"
-            android:textSize="16sp" />
-
-        <TextView
             android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqahansansneo_medium"
             android:text="@{vm.userProfileLiveData.email}"
+            android:textColor="@color/white"
             android:textSize="16sp"
-            tools:text="test@test.com"/>
+            tools:text="test@test.com" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_membership"

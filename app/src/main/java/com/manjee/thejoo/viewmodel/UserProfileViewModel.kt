@@ -50,11 +50,11 @@ class UserProfileViewModel @Inject constructor(
                 success = {
                     val list = arrayListOf<UserMembership>()
 
-                    for (i in 0..30) {
-                        list.add(UserMembership(storeName = i.toString()))
-                    }
-
-                    _userMembershipLiveData.value?.let { currentList -> list.addAll(currentList) }
+//                    for (i in 0..30) {
+//                        list.add(UserMembership(storeName = i.toString()))
+//                    }
+//
+//                    _userMembershipLiveData.value?.let { currentList -> list.addAll(currentList) }
                     list.addAll(it.content)
                     _userMembershipLiveData.postValue(list)
 

@@ -17,17 +17,17 @@
         <Constraint
             android:id="@+id/iv_bigBackground"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/iv_profile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
             android:scaleX="1"
             android:scaleY="1"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
 
@@ -35,17 +35,10 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            motion:layout_constraintStart_toEndOf="@id/iv_profile"
-            motion:layout_constraintTop_toTopOf="@id/iv_profile" />
-
-        <Constraint
-            android:id="@+id/tv_membershipCnt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            motion:layout_constraintStart_toEndOf="@id/iv_profile"
-            motion:layout_constraintTop_toBottomOf="@id/tv_name" />
+            android:layout_marginTop="10dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/iv_profile" />
 
         <Constraint
             android:id="@+id/tv_email"
@@ -54,8 +47,9 @@
             android:layout_marginTop="5dp"
             android:alpha="1.0"
             android:visibility="visible"
-            motion:layout_constraintStart_toStartOf="@id/iv_profile"
-            motion:layout_constraintTop_toBottomOf="@id/iv_profile" />
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/tv_name" />
 
         <Constraint
             android:id="@+id/rv_membership"
@@ -69,13 +63,13 @@
         <Constraint
             android:id="@+id/iv_bigBackground"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/iv_profile"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             motion:layout_constraintStart_toStartOf="parent"
@@ -86,16 +80,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            motion:layout_constraintBottom_toBottomOf="@id/iv_profile"
             motion:layout_constraintStart_toEndOf="@id/iv_profile"
             motion:layout_constraintTop_toTopOf="@id/iv_profile" />
-
-        <Constraint
-            android:id="@+id/tv_membershipCnt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            motion:layout_constraintStart_toEndOf="@id/iv_profile"
-            motion:layout_constraintTop_toBottomOf="@id/tv_name" />
 
         <Constraint
             android:id="@+id/tv_email"
