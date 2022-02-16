@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.manjee.thejoo.viewmodel.UserProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -32,27 +35,31 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="지운만"
-            android:textSize="16sp" />
+            android:text="@{vm.userProfileLiveData.name}"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="10dp"
+            tools:text="유저 이름" />
 
         <TextView
             android:id="@+id/tv_membershipCnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4"
+            android:text="해당 필드 내용 아직 확정X"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="manjee.official@gmail.com"
-            android:textSize="16sp" />
+            android:text="@{vm.userProfileLiveData.email}"
+            android:textSize="16sp"
+            tools:text="test@test.com"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_membership"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             tools:listitem="@layout/item_membership" />
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

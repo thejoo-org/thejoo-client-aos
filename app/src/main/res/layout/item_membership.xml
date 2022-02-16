@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="membership"
+            type="com.manjee.thejoo.data.model.UserMembership" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:paddingHorizontal="16dp">
 
         <TextView
             android:id="@+id/tv_membershipName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="멤버쉽"
+            android:text="@{membership.storeName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="바 이름" />
+
+        <TextView
+            android:id="@+id/tv_membershipPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{membership.point + "point"}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="10000point" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

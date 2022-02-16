@@ -37,7 +37,7 @@ class UserViewModel @Inject constructor(
     // 유저 인증 토큰 생성
     fun getUserToken() {
         viewModelScope.launch(Dispatchers.IO) {
-            testRepository.createAuthToken(3,
+            testRepository.createAuthToken(1,
                 success = {
                     Log.d(TAG, "success createUerToken $it")
                     theJooPreference.setUserToken(it)
@@ -81,7 +81,7 @@ class UserViewModel @Inject constructor(
 
     // QR 유효 시간 보여주기
     private fun startQrTimer(exp: Date) {
-        var remain: Long = 0
+        var remain: Long
         timer(period = 1000, initialDelay = 1000) {
             remain = (exp.time - System.currentTimeMillis()) / 1000
             CoroutineScope(Dispatchers.Main).launch {
