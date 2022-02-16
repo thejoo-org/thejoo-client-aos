@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.manjee.thejoo.data.model.UserMembership
+import androidx.recyclerview.widget.RecyclerView
 import com.manjee.thejoo.databinding.FragmentUserProfileBinding
 import com.manjee.thejoo.viewmodel.UserProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +29,7 @@ class UserProfileFragment : Fragment() {
             vm = viewModel
 
             initView()
+            observedVm()
 
             root
         }
@@ -38,6 +39,7 @@ class UserProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getUserProfile()
+        viewModel.getUserMembership()
     }
 
     private fun FragmentUserProfileBinding.initView() {
@@ -46,12 +48,20 @@ class UserProfileFragment : Fragment() {
         rvMembership.apply {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             adapter = userMembershipAdapter
-        }
 
-        val membershipList = arrayListOf<UserMembership>()
-        for (i in 0..100) {
-            membershipList.add(UserMembership(storeName = i.toString()))
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    if (!recyclerView.canScrollVertically(1)) {
+                        viewModel.getUserMembership()
+                    }
+                }
+            })
         }
-        userMembershipAdapter.submitList(membershipList as MutableList<UserMembership>)
+    }
+
+    private fun FragmentUserProfileBinding.observedVm() {
+        viewModel.userMembershipLiveData.observe(viewLifecycleOwner) {
+            userMembershipAdapter.submitList(it)
+        }
     }
 }

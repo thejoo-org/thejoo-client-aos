@@ -2,6 +2,7 @@ package com.manjee.thejoo.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -30,8 +31,7 @@ class UserMembershipAdapter(private val onClick: (UserMembership) -> Unit) :
 
         fun bind(userMembership: UserMembership) {
             currentUserMembership = userMembership
-
-            binding.tvMembershipName.text = userMembership.storeName
+            binding.membership = userMembership
         }
     }
 
