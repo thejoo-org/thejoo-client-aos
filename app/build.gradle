@@ -75,6 +75,9 @@ dependencies {
     // decode jwt
     implementation 'com.auth0.android:jwtdecode:2.0.1'
 
+    // circle imageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.0-alpha01"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.0-alpha01"
