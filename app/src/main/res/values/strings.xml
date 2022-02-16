@@ -2,4 +2,7 @@
     <string name="app_name">TheJoo</string>
     <string name="string_user_test">유저 테스트</string>
     <string name="string_ceo_test">업주 테스트</string>
+    <string name="string_show_qr_code_to_ceo">QR 코드를 사장님께 보여주세요 :)</string>
+    <string name="string_remain_time">남은 시간</string>
+    <string name="string_navigate_my_profile">내 정보로 이동하기</string>
 </resources>

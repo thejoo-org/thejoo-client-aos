@@ -36,6 +36,9 @@ class UserViewModel @Inject constructor(
 
     // 유저 인증 토큰 생성
     fun getUserToken() {
+        // 화면 업데이트를 위해 초기 시간 설정
+        _remainQrTime.postValue(300)
+
         viewModelScope.launch(Dispatchers.IO) {
             testRepository.createAuthToken(1,
                 success = {
@@ -71,7 +74,7 @@ class UserViewModel @Inject constructor(
     private fun createUserQrCode(qrData: String) {
         try {
             val barcodeEncoder = BarcodeEncoder()
-            val bitmap = barcodeEncoder.encodeBitmap(qrData, BarcodeFormat.QR_CODE, 400, 400)
+            val bitmap = barcodeEncoder.encodeBitmap(qrData, BarcodeFormat.QR_CODE, 200, 200)
 
             _createUerQrLiveData.postValue(bitmap)
         } catch (e: Exception) {
