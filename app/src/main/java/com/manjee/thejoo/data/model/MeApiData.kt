@@ -22,3 +22,19 @@ data class ResponseGetUserMembership(
     val content: ArrayList<UserMembership> = arrayListOf(),
     val empty: Boolean = true
 )
+
+data class ResponseGetMembershipDetail(
+    val id: Int = 0,
+    @SerializedName("user_id")
+    val userId: Int = 0,
+    @SerializedName("store_id")
+    val storeId: Int = 0,
+    val store: Store = Store(),
+    val point: Int = 0,
+    @SerializedName("created_at")
+    val createdAt: String = "",
+    @SerializedName("updated_at")
+    val updatedAt: String = "",
+    @SerializedName("latest_apply_transaction_history")
+    val latestApplyTransactionHistory: Transaction = Transaction()
+)
