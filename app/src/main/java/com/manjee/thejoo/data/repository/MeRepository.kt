@@ -1,5 +1,6 @@
 package com.manjee.thejoo.data.repository
 
+import com.manjee.thejoo.data.model.ResponseGetMembershipDetail
 import com.manjee.thejoo.data.model.ResponseGetUserMembership
 import com.manjee.thejoo.data.model.UserProfile
 
@@ -11,4 +12,5 @@ interface MeRepository {
         success: (ResponseGetUserMembership) -> Unit,
         fail: (Throwable) -> Unit
     )
+    suspend fun getMembershipDetail(membershipId: Int, success: (ResponseGetMembershipDetail) -> Unit, fail: (Throwable) -> Unit)
 }

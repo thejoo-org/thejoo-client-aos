@@ -2,6 +2,7 @@ package com.manjee.thejoo.data.repository
 
 import android.util.Log
 import com.manjee.thejoo.api.MeApi
+import com.manjee.thejoo.data.model.ResponseGetMembershipDetail
 import com.manjee.thejoo.data.model.ResponseGetUserMembership
 import com.manjee.thejoo.data.model.ResponseGetUserToken
 import com.manjee.thejoo.data.model.UserProfile
@@ -67,6 +68,29 @@ class MeRepositoryImpl @Inject constructor(
             }
 
             override fun onFailure(call: Call<ResponseGetUserMembership>, t: Throwable) {
+                fail(t)
+            }
+        })
+    }
+
+    override suspend fun getMembershipDetail(
+        membershipId: Int,
+        success: (ResponseGetMembershipDetail) -> Unit,
+        fail: (Throwable) -> Unit
+    ) {
+        meApi.getMembershipDetail(membershipId).enqueue(object : Callback<ResponseGetMembershipDetail> {
+            override fun onResponse(
+                call: Call<ResponseGetMembershipDetail>,
+                response: Response<ResponseGetMembershipDetail>
+            ) {
+                if (response.code() in 200..399) {
+                    success(response.body()!!)
+                } else {
+                    Log.e(TAG, "fail getUserProfile $response")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseGetMembershipDetail>, t: Throwable) {
                 fail(t)
             }
         })
